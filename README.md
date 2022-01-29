@@ -1,3 +1,3 @@
-## My First React App
+# My First React App
 
-# Based on O'Rielly Course
+## Based on O'Rielly Course
