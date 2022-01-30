@@ -10,20 +10,19 @@ function App() {
     { id: 'e4', title: 'New Desk (wooden)', amount: 450, date: new Date(2021, 5, 12)}
   ];
 
-  const [newExpenses, setNewExpense] = useState(expense);
+  const [newExpenses, setNewExpenses] = useState(expense);
 
   const addExpenseHandler = newExpense => {
-    setNewExpense([...newExpenses, newExpense]);
-  }
+    setNewExpenses([...newExpenses, newExpense]);
+  };
 
   const deleteHandler = (id) => {
-    console.log(id);
     const expenseChanged = [];
     newExpenses.forEach(element => {
       if (element.id !== id)
         expenseChanged.push(element);
     });
-    setNewExpense(expenseChanged);
+    setNewExpenses(expenseChanged);
   };
 
   return (
