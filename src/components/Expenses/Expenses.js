@@ -1,21 +1,36 @@
-import ExpenseItem from './ExpenseItem';
-import './Expenses.css';
-import Card from '../UI/Card';
+import ExpensesList from "./ExpensesList";
+import "./Expenses.css";
+import Card from "../UI/Card";
+import ExpensesFilter from "./ExpensesFilter";
+import { useState } from "react";
+import ExpenseCharts from "./ExpensesChart";
 
+function Expenses(props) {
+  const [selectedYear, setSelectedYear] = useState("2020");
 
+  const changeFilterHandler = (value) => {
+    setSelectedYear(value);
+  };
 
-function Expenses (props) {
-    const removeHandler = id => {
-        props.onDelete(id);
-    }
-    return (
-        <Card className='expenses'>
-            {props.exp.map(x => {
-                // console.log(x.id);
-                return <ExpenseItem title = {x.title} amount = {x.amount} date = {x.date} id = {x.id} onRemove = {removeHandler} />
-            })}
-        </Card>
-    );
+  const filteredExpenses = props.exp.filter(
+    (expense) => expense.date.getFullYear().toString() === selectedYear
+  );
+  const cancelHandler = (id) => {
+    props.onDelete(id);
+  };
+
+  return (
+    <li>
+      <Card className="expenses">
+        <ExpensesFilter
+          onChangeFilter={changeFilterHandler}
+          year={selectedYear}
+        />
+        <ExpenseCharts expenses={filteredExpenses} />
+        <ExpensesList item={filteredExpenses} onCancel={cancelHandler} />
+      </Card>
+    </li>
+  );
 }
 
 export default Expenses;

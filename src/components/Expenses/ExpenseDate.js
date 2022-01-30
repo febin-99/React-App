@@ -1,20 +1,31 @@
+import "./ExpenseDate.css";
 
-import './ExpenseDate.css';
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
 
-const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-
-function ExpenseDate (props) {
-    const month = props.date.getMonth();
-    const day = props.date.getDate()
-    const year = props.date.getFullYear();
-    return (
-        <div className = 'expense-date'>
-            <div className = 'expense-date__month'>{months[month]}</div>
-            <div className = 'expense-date__year'>{year}</div>
-            <div className = 'expense-date__day'>{day}</div>
-        </div>
-    );
+function ExpenseDate(props) {
+  const month = props.date.getMonth();
+  const day = props.date.getDate();
+  const year = props.date.getFullYear();
+  return (
+    <div className="expense-date">
+      <div className="expense-date__month">{months[month]}</div>
+      <div className="expense-date__year">{year}</div>
+      <div className="expense-date__day">{day}</div>
+    </div>
+  );
 }
 
 export default ExpenseDate;
