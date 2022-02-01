@@ -7,8 +7,11 @@ function App() {
   const logInHandler = (status) => {
     setLogStatus(status);
   };
-  let login = <Login onLogIn={logInHandler} />;
-  let tracker = <ExpenseTracker />;
+  const logOutHandler = () => {
+    setLogStatus(false);
+  };
+  let login = <Login onLogIn={logInHandler} onLogOut={logOutHandler} />;
+  let tracker = <ExpenseTracker onLogOut={logOutHandler} />;
   return <div>{logStatus ? tracker : login}</div>;
 }
 

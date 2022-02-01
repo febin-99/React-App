@@ -1,4 +1,5 @@
 import Card from "../UI/Card";
+import './LoginForm.css';
 
 const LoginForm = (props) => {
   const credentials = { username: "", password: "" };
@@ -22,10 +23,10 @@ const LoginForm = (props) => {
   return (
     <Card>
       <form onSubmit={submitHandler}>
-        <label>Username</label>
-        <input type="text" onChange={usernameHandler} />
-        <label>Password</label>
-        <input type="password" onChange={passwordHandler} />
+        <label className = 'field'>Username</label>
+        <input className = 'field' type="text" onChange={usernameHandler} />
+        <label className = 'field'>Password</label>
+        <input className = 'field' type="password" onChange={passwordHandler} />
         <button type="submit">Log In</button>
       </form>
     </Card>
